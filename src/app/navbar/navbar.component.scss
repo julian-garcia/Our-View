@@ -1,0 +1,49 @@
+@import '~src/scss/all';
+
+.navigation {
+  &__links {
+    margin: 0;
+    padding: 20px 0;
+    width: 100vw;
+    list-style: none;
+
+    @include target-device(tablet-portrait-up) {
+      @include display-grid(center, auto-fit, 0);
+      width: 80vw;
+      padding: 20px 10vw;
+    }
+  }
+
+  &__item:hover &__submenu {
+    cursor: pointer;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &__item {
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__submenu {
+    position: absolute;
+    opacity: 0;
+    top: 1.2rem;
+    left: -5px;
+    overflow: hidden;
+    background: rgba(255,255,255,.9);
+    list-style: none;
+    padding: 0;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.85);
+    border-radius: 5px;
+    transform: translateY(-100%);
+    transition: opacity .5s ease-in-out .1s, transform .5s ease-in-out;
+
+    &-item {
+      margin: 10px 5px;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import '~src/scss/all';
+
+.listing-grid {
+  @include display-grid(no, auto-fill, 200px);
+  column-gap: 20px;
+  row-gap: 20px;
+
+  &__item {
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.85);
+    min-height: 100px;
+    padding: 20px;
+  }
+}
