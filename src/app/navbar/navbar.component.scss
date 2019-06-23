@@ -7,7 +7,7 @@
     width: 100vw;
     list-style: none;
 
-    @include target-device(tablet-portrait-up) {
+    @include target-device(phablet-up) {
       @include display-grid(center, auto-fit, 0);
       width: 80vw;
       padding: 20px 10vw;
@@ -28,6 +28,10 @@
     }
   }
 
+  &__logo {
+    height: 1.1rem;
+  }
+
   &__submenu {
     position: absolute;
     opacity: 0;
@@ -41,6 +45,7 @@
     border-radius: 5px;
     transform: translateY(-100%);
     transition: opacity .5s ease-in-out .1s, transform .5s ease-in-out;
+    z-index: 99;
 
     &-item {
       margin: 10px 5px;

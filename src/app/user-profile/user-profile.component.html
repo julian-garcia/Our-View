@@ -1,0 +1,10 @@
+<div *ngIf="!(authService.user | async)">
+  <input type="text" [(ngModel)]="email" placeholder="email"><br>
+  <input type="password" [(ngModel)]="password" placeholder="password"><br>
+  <button class="button" (click)="register()" [disabled]="!email || !password">
+    Register
+  </button><br>
+  <button class="button" (click)="login()" [disabled]="!email || !password">
+    Login
+  </button>
+</div>

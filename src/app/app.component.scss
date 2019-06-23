@@ -3,6 +3,12 @@
 .container {
   margin: 0 auto;
   max-width: 80vw;
-  display: grid;
-  grid-template-columns: 1fr 4fr;
+  display: block;
+  min-height: calc(100vh - 110px);
+
+  @include target-device(tablet-portrait-up) {
+    display: grid;
+    grid-template-columns: 1fr 0 4fr;
+    column-gap: 20px;
+  }
 }

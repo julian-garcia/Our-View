@@ -8,7 +8,7 @@ import { Feedback } from '../shared/feedback.service';
 })
 export class FeedbackItemComponent implements OnInit {
   @Input() feedback: Feedback;
-  
+
   constructor() { }
 
   ngOnInit() {

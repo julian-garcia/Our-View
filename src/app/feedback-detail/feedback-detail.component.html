@@ -1,3 +1,11 @@
-<p>
-  feedback-detail works!
-</p>
+<div class="feedback-detail">
+  <h2 class="feedback-detail__title">{{ feedback.title }}</h2>
+  <h3>The issue</h3>
+  <p class="feedback-detail__copy">{{ feedback.issue }}</p>
+  <hr>
+  <h3>Suggested solution</h3>
+  <p class="feedback-detail__copy">{{ feedback.suggestion }}</p>
+  <hr>
+  <ov-upvotes [feedbackId]="feedback.id"></ov-upvotes>
+  <p class="feedback-detail__date">Date submitted: {{ feedback.timestamp }}</p>
+</div>

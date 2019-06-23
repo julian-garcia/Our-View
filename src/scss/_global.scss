@@ -1,0 +1,27 @@
+@import 'variables';
+
+h1, h2, h3 {
+  font-family: TitleFont;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+p, li, button, input {
+  font-family: CopyFont;
+  font-size: 1.1rem;
+}
+
+.button {
+  background-color: $link_colour;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 1.3rem;
+}

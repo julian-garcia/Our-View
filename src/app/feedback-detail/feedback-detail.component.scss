@@ -1,0 +1,29 @@
+@import '~src/scss/all';
+
+.feedback-detail {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.85);
+  min-height: 100px;
+  padding: 40px 20px;
+  margin-top: 20px;
+  position: relative;
+
+  @include target-device(tablet-portrait-up) {
+    width: 60%;
+    margin: 20px auto 0;
+  }
+
+  &__title {
+    background-color: rgba(white, .85);
+    margin: -55px 0 0 -10px;
+    padding: 0 10px 20px;
+    width: fit-content;
+  }
+
+  &__date {
+    position: absolute;
+    bottom: -28px;
+    background-color: rgba(white, .85);
+  }
+}

@@ -7,7 +7,6 @@ import { Feedback, FeedbackService } from '../shared/feedback.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   feedback: Feedback[] = [];
   constructor(private feedbackService: FeedbackService) { }
 
