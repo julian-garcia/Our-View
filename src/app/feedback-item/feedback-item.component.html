@@ -1,3 +1,4 @@
 <h2 class="feedback-item">
-  <a [routerLink]="['/feedback', feedback.id]">{{ feedback.title }}</a>
+  <a [routerLink]="['/feedback', feedback.id]">{{ feedback.title }}</a> 
+  <span> ({{ votes }})</span>
 </h2>

@@ -6,6 +6,9 @@
   <h3>Suggested solution</h3>
   <p class="feedback-detail__copy">{{ feedback.suggestion }}</p>
   <hr>
-  <ov-upvotes [feedbackId]="feedback.id"></ov-upvotes>
+  <ov-upvotes [feedbackId]="feedback.id" *ngIf="authService.userLoggedIn"></ov-upvotes>
+  <p class="feedback-detail__copy" *ngIf="!authService.userLoggedIn">
+    Please <a [routerLink]="['/profile']">sign in</a> to upvote
+  </p>
   <p class="feedback-detail__date">Date submitted: {{ feedback.timestamp }}</p>
 </div>

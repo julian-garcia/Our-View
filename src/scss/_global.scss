@@ -1,6 +1,6 @@
 @import 'variables';
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
   font-family: TitleFont;
 }
 
@@ -11,11 +11,14 @@ html, body {
 
 a {
   text-decoration: none;
+  color: $link_colour;
+
 }
 
 p, li, button, input {
   font-family: CopyFont;
   font-size: 1.1rem;
+  color: $copy_colour;
 }
 
 .button {

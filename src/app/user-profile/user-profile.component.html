@@ -1,4 +1,4 @@
-<div *ngIf="!(authService.user | async)">
+<div *ngIf="!authService.userLoggedIn">
   <input type="text" [(ngModel)]="email" placeholder="email"><br>
   <input type="password" [(ngModel)]="password" placeholder="password"><br>
   <button class="button" (click)="register()" [disabled]="!email || !password">
@@ -6,5 +6,10 @@
   </button><br>
   <button class="button" (click)="login()" [disabled]="!email || !password">
     Login
+  </button>
+</div>
+<div *ngIf="authService.userLoggedIn">
+  <button class="button" (click)="logout()">
+    Logout
   </button>
 </div>

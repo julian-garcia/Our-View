@@ -11,18 +11,21 @@
     <li class="navigation__item">
       <a class="navigation__link" href="#">Overview</a>
     </li>
-    <li class="navigation__item">My Profile
+    <li class="navigation__item" *ngIf="authService.userLoggedIn">Me
       <ul class="navigation__submenu">
         <li class="navigation__submenu-item">
-          <a class="navigation__submenu-link" href="#">Sign In</a>
+          <a class="navigation__submenu-link" (click)="logout()">Sign Out</a>
         </li>
         <li class="navigation__submenu-item">
-          <a class="navigation__submenu-link" href="#">Edit Profile</a>
+          <a class="navigation__submenu-link" [routerLink]="['/']">My Feedback</a>
         </li>
         <li class="navigation__submenu-item">
-          <a class="navigation__submenu-link" href="#">Manage Feedback</a>
+          <a class="navigation__submenu-link" [routerLink]="['/']">My Upvotes</a>
         </li>
       </ul>
+    </li>
+    <li class="navigation__item" *ngIf="!authService.userLoggedIn">
+      <a class="navigation__link" [routerLink]="['profile']">Sign In</a>
     </li>
   </ul>
 </nav>

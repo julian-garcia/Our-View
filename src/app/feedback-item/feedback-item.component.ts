@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Feedback } from '../shared/feedback.service';
+import { Feedback, FeedbackService } from '../shared/feedback.service';
 
 @Component({
   selector: 'ov-feedback-item',
@@ -8,10 +8,13 @@ import { Feedback } from '../shared/feedback.service';
 })
 export class FeedbackItemComponent implements OnInit {
   @Input() feedback: Feedback;
+  votes: number = 0;
 
-  constructor() { }
+  constructor(private feedbackService:FeedbackService) { }
 
   ngOnInit() {
+    this.feedbackService.getFeedbackRatings(this.feedback.id)
+      .forEach(rating => this.votes += rating.upvote);
   }
 
 }
