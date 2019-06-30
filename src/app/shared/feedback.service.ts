@@ -1,77 +1,36 @@
 import { Injectable } from '@angular/core';
-
-export class Feedback {
-  constructor(
-    public id: number,
-    public title: string,
-    public issue: string,
-    public suggestion: string,
-    public timestamp: Date
-  ) { }
-}
-
-export class FeedbackRating {
-  constructor(
-    public id: number,
-    public feedbackId: number,
-    public user: string,
-    public upvote: number,
-    public timestamp: Date
-  ) { }
-}
+import { AngularFireDatabase } from '@angular/fire/database';
+import { Feedback, FeedbackRating } from './models/feedback';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FeedbackService {
-  getFeedback(): Feedback[] {
-    let dt;
-    return feedback.map(item => {
-      dt = new  Date (item.timestamp);
-      return new Feedback(item.id, item.title, item.issue, item.suggestion, dt);
-    });
+  constructor(private firebaseDB: AngularFireDatabase) { }
+
+  getFeedback() {
+    return this.firebaseDB.list('/feedback').snapshotChanges();
   }
+
   getFeedbackById(feedbackId) {
-    let dt;
-    return feedback.filter(item => {
-      dt = new  Date (item.timestamp);
-      if (item.id == feedbackId) {
-        return new Feedback(item.id, item.title, item.issue, item.suggestion, dt);
-      }
-    })[0];
+    return this.firebaseDB.object('/feedback/' + feedbackId).snapshotChanges();
   }
-  getFeedbackRatings(feedbackId): FeedbackRating[] {
-    let dt;
-    return ratings.map(item => {
-      dt = new  Date (item.timestamp);
-      return new FeedbackRating(item.id, item.feedbackId, item.user, item.upvote, dt);
-    });
+
+  getFeedbackRatings(feedbackId) {
+    return this.firebaseDB.list('/upvotes', ref => ref.orderByChild('feedbackId').equalTo(feedbackId)).snapshotChanges();
+  }
+
+  addFeedback(title, issue, suggestion) {
+    const newFeedback = new Feedback(title, issue, suggestion, new Date().toString());
+    this.firebaseDB.list('/feedback/').push(newFeedback);
+  }
+
+  addUpVote(feedbackId, user) {
+    const newRating = new FeedbackRating(feedbackId, user, 1, new Date().toString());
+    this.firebaseDB.list('/upvotes/').push(newRating);
+  }
+
+  deleteUpVote(ratingId) {
+    this.firebaseDB.list('/upvotes/' + ratingId).remove();
   }
 }
-
-const feedback = [
-  {
-    'id': 1,
-    'title': 'my title',
-    'issue': 'my issue',
-    'suggestion': 'my sugg',
-    'timestamp': "2012-04-21"
-  },
-];
-
-const ratings = [
-  {
-    'id': 1,
-    'feedbackId': 1,
-    'user': 'test',
-    'upvote': 1,
-    'timestamp': "2012-05-17"
-  },
-  {
-    'id': 1,
-    'feedbackId': 1,
-    'user': 'test',
-    'upvote': 1,
-    'timestamp': "2012-05-17"
-  }
-];

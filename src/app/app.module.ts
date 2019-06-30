@@ -9,15 +9,16 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
 import { UpvotesComponent } from './upvotes/upvotes.component';
-import { FeedbackItemComponent } from './feedback-item/feedback-item.component';
-import { FeedbackDetailComponent } from './feedback-detail/feedback-detail.component';
+import { FeedbackItemComponent } from './feedback/feedback-item/feedback-item.component';
+import { FeedbackDetailComponent } from './feedback/feedback-detail/feedback-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FeedbackService } from './shared/feedback.service';
 
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { FeedbackFormComponent } from './feedback/feedback-form/feedback-form.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,14 @@ import { environment } from '../environments/environment';
     UpvotesComponent,
     FeedbackItemComponent,
     FeedbackDetailComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    FeedbackFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFireDatabaseModule,
     AngularFireAuthModule,
     FormsModule
   ],

@@ -1,0 +1,18 @@
+<form (ngSubmit)="onSubmit()" #feedbackForm="ngForm" class="feedback-form">
+  <input type="text" required
+    class="feedback-form__text"
+    [(ngModel)]="model.title"
+    name="title"
+    placeholder="Title">
+  <textarea cols="30" rows="5" 
+    class="feedback-form__text"
+    name="issue" 
+    placeholder="Issue" 
+    [(ngModel)]="model.issue"></textarea>
+  <textarea cols="30" rows="5" 
+    class="feedback-form__text"
+    name="suggestion" 
+    placeholder="Suggestion" 
+    [(ngModel)]="model.suggestion"></textarea>
+  <button class="button" type="submit">Add feedback</button>
+</form>

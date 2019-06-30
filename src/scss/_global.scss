@@ -12,10 +12,9 @@ html, body {
 a {
   text-decoration: none;
   color: $link_colour;
-
 }
 
-p, li, button, input {
+p, li, button, input, textarea {
   font-family: CopyFont;
   font-size: 1.1rem;
   color: $copy_colour;
